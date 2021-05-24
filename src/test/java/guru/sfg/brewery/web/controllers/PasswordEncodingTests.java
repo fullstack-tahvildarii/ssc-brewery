@@ -1,8 +1,9 @@
 package guru.sfg.brewery.web.controllers;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.util.DigestUtils;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,6 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PasswordEncodingTests {
 
     static final String PASSWORD = "password";
+
+    @Test
+    void testSh256() {
+        PasswordEncoder encoder = new StandardPasswordEncoder();
+        System.out.println(encoder.encode(PASSWORD));
+        System.out.println(encoder.encode(PASSWORD));
+
+    }
 
     @Test
     void hashingExampleMD5() {
